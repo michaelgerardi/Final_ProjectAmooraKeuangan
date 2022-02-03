@@ -52,3 +52,6 @@ Route::get('/bukubesar', [App\Http\Controllers\jurnal_Controller::class, 'bukube
 
 //Dashboard
 Route::get('/Admin_Amoora', [App\Http\Controllers\dashboard_Controller::class, 'index_dashboard']);
+
+//Laba Rugi
+Route::get('/labarugi/{bln}/{year}', [App\Http\Controllers\jurnal_Controller::class, 'labarugi']);
