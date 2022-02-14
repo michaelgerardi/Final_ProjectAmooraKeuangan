@@ -44,7 +44,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo_1.png" alt="logo"></a>
+                    <a href="/Admin_Amoora"><img src="assets/images/logo_1.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -52,25 +52,14 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
-                                    <li><a href="index.html">ICO dashboard</a></li>
-                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                    <li><a href="index3.html">SEO dashboard</a></li>
-                                </ul>
+                                <a href="/Admin_Amoora" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i><span>Table Amoora</span></a>
                                 <ul class="collapse">
-                                    <li><a href="index.html">Slot Sampling</a></li>
-                                    <li><a href="index.html">List Sampling</a></li>
-                                    <li><a href="index.html">List Product</a></li>
-                                    <li><a href="index.html">Progress</a></li>
-                                    <li><a href="index.html">Pemasukan</a></li>
-                                    <li><a href="index.html">Pengeluaran </a></li>
-                                    <li><a href="index.html">Sawer </a></li>
-                                    <li><a href="index.html">Transaksi </a></li>
-                                    <li><a href="index.html">Penjualan </a></li>
+                                    <li><a href="/pemasukkan">Pemasukan</a></li>
+                                    <li><a href="/pengeluaran">Pengeluaran </a></li>
+                                    <li><a href="/sewer">Sewer </a></li>
                                 </ul>
                             </li>
                             <!-- <li>
@@ -375,6 +364,10 @@
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                       Tambah Data Pemasukan
                                     </button>
+                                    <div class="drop-buttons row">
+                                    <div class="dropdown col-lg-6 col-md-4 col-sm-6">
+                                    <a type="button" class="btn btn-primary mb-3" href="/downloadPDF/pemasukanpdf">Download File</a>
+                                </div>
                                     <br>
                                     <table id="dataTable" class="text-center">
                                         <thead class="bg-light text-capitalize">
@@ -384,6 +377,7 @@
                                                 <th>Nominal</th>
                                                 <th>Update</th>
                                                 <th>Delete</th>
+                                               
                                             </tr>
                                         </thead>
                                   
@@ -394,7 +388,8 @@
                                                 <td>{{$pemasukan->ket_pemasukkan}}</td>
                                                 <td>@currency($pemasukan->nominal)</td>
                                                 <td><a href="" class="btn btn-default">update</a></td>
-                                                <td><a href="" class="btn btn-default">delete</a></td>
+                                                <td><a href="/deletepemasukan/{{$pemasukan->id_pemasukan}}" class="btn btn-default">delete</a></td>
+                                               
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -437,9 +432,7 @@
                       </div>
                       </div>
                       </div>
-                       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                    
                     <!-- Modal Input -->
                 </div>
             </div>

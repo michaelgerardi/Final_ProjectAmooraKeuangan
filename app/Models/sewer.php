@@ -9,6 +9,6 @@ class sewer extends Model
 {
     use HasFactory;
     protected $table='sewer';
-    protected $fillable=['nip','nama','tgl_lahir','alamat','no_hp','jenis_kelamin','posisi','image'];
+    protected $fillable=['id_users','nip','nama','tgl_lahir','alamat','no_hp','jenis_kelamin','posisi','image'];
     protected $primaryKey = 'id_sewer';
 }

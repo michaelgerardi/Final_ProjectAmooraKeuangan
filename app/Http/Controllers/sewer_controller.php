@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\sewer;
 use App\Models\gaji;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use PDF;
 
 class sewer_controller extends Controller
@@ -15,7 +17,26 @@ class sewer_controller extends Controller
     }
 
     public function tambah_sewer(Request $request){
-        \App\Models\sewer::create($request->all());
+        //\App\Models\sewer::create($request->all());
+        $user = new User([
+            'name'=>$request->nip,
+            'role'=>'0',
+            'password' => Hash::make($request->password),
+        ]);
+        $user->save();
+        $id_user=User::where('name',$request->nip)->latest()->value('id');
+        $data_sewer = new sewer([
+            'nip' =>$request->nip,
+            'id_users'=>$id_user,
+            'nama'=>$request->nama,
+            'tgl_lahir'=>$request->tgl_lahir,
+            'alamat'=>$request->alamat,
+            'no_hp'=>$request->no_hp,
+            'jenis_kelamin'=>$request->jenis_kelamin,
+            'posisi'=>$request->posisi,
+            'image'=>$request->image
+        ]);
+        $data_sewer->save();
         // /$request->validate([
         //     'nip' => 'required',
         //     'nama' => 'required',
@@ -38,7 +59,7 @@ class sewer_controller extends Controller
         // $post->content = $request->content;
         // $post->save();
         return redirect('sewer')->with('Sukses','Data berhasil ditambahkan');
-      
+        //return $data_sewer;
     }
 
     public function edit_sewer($id_sewer, Request $request){
@@ -81,6 +102,12 @@ class sewer_controller extends Controller
         ->groupBy('tgl_gaji')->get()->take(4);
         return view('Sewer.Akunprofil',compact('data_akun','data_harian','data_borongan','total_gaji'));
         
+    }
+
+    public function download_sewer(){
+        $data_sewer = sewer::all();
+        $pdf = PDF::loadView('sewerpdf.sewerpdf',compact('data_sewer'));
+        return $pdf->download('Laporan Gaji Sewer Amoora.pdf');
     }
 
     

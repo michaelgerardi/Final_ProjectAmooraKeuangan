@@ -51,4 +51,27 @@ Route::get('/Jurnal_umum', [App\Http\Controllers\jurnal_Controller::class, 'jurn
 Route::get('/bukubesar', [App\Http\Controllers\jurnal_Controller::class, 'bukubesar']);
 
 //Dashboard
-Route::get('/Admin_Amoora', [App\Http\Controllers\dashboard_Controller::class, 'index_dashboard']);
+Route::get('/Admin_Amoora', [App\Http\Controllers\dashboard_Controller::class, 'index_dashboard'])->name('index_admin');
+
+//Login
+Route::get('/LoginAdmin', [App\Http\Controllers\dashboard_Controller::class, 'index_dashboard'])->name('loginadmin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Laba Rugi
+Route::get('/labarugi/{bln}/{year}', [App\Http\Controllers\jurnal_Controller::class, 'labarugi']);
+
+//Generate PDF pengeluaran
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+route::get('/downloadPDF/kewajibanpdf',[App\Http\Controllers\pengeluaran_controller::class, 'download_pengeluarankewajiban'])->name('downloadpdf_kewajiban');
+route::get('/downloadPDF/produksipdf',[App\Http\Controllers\pengeluaran_controller::class, 'download_pengeluaranproduksi'])->name('downloadpdf_produksi');
+route::get('/downloadPDF/customerpdf',[App\Http\Controllers\pengeluaran_controller::class, 'download_pengeluarancust'])->name('downloadpdf_customer');
+
+//Generate PDF pemasukkann
+route::get('/downloadPDF/pemasukanpdf',[App\Http\Controllers\pemasukan_controller::class, 'download_pemasukan'])->name('downloadpdf_pemasukan');
+
+//Delete 
+Route::get('/deletepemasukan/{id_pemasukan}',[App\Http\Controllers\pemasukan_controller::class, 'delete_pemasukan']);
+Route::get('/deletepengeluaran/{id_pengeluaran}',[App\Http\Controllers\pengeluaran_controller::class, 'delete_pengeluaran']);

@@ -40,7 +40,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo_1.png" alt="logo"></a>
+                    <a href="/Admin_Amoora"><img src="assets/images/logo_1.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -59,15 +59,9 @@
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i><span> Table Amoora
                                     </span></a>
                                 <ul class="collapse">
-                                    <li><a href="Slot_Sampling.html">Slot Sampling</a></li>
-                                    <li><a href="List_sampling.html">List Sampling</a></li>
-                                    <li><a href="List_Product.html">List Product</a></li>
-                                    <li><a href="index.html">Progress</a></li>
-                                    <li><a href="index.html">Pemasukan</a></li>
-                                    <li><a href="index.html">Pengeluaran </a></li>
-                                    <li><a href="Sewer.html">Sawer </a></li>
-                                    <li><a href="index.html">Transaksi </a></li>
-                                    <li><a href="index.html">Penjualan </a></li>
+                                    <li><a href="/pemasukkan">Pemasukan</a></li>
+                                    <li><a href="/pengeluaran">Pengeluaran </a></li>
+                                    <li><a href="/sewer">Sewer </a></li>
                                 </ul>
                             </li>
                             <!-- <li>
@@ -353,7 +347,7 @@
                             <div class="dropdown-menu">
                                 <!-- <a class="dropdown-item" href="#">Message</a> -->
                                 <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <a class="dropdown-item" href="/login">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -377,7 +371,7 @@
                                         {{-- <span>- 45.87</span> --}}
                                     </div>
                                 </div>
-                                <canvas id="coin_sales1" height="100"></canvas>
+                                <canvas id="grafik_pemasukkan" height="100"></canvas>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -393,15 +387,32 @@
                                         {{-- <span>- 45.87</span> --}}
                                     </div>
                                 </div>
-                                <canvas id="coin_sales2" height="100"></canvas>
+                                <canvas id="grafik_pengeluaran" height="100"></canvas>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="single-report">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                <div class="s-report-inner pr--20 pt--30 mb-3 mt-5">
                                     <div class="icon"><i class="fa fa-money"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Jumlah Pegawai</h4>
+                                        <!-- <p>24 H</p> -->
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2>{{$total_pegawai->pegawai}}</h2>
+                                        {{-- <span>- 45.87</span> --}}
+                                    </div>
+                                </div>
+                                <canvas id="coin_sales3" height="100"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                            <div class="single-report">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-money"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Laba Rugi</h4>
                                         <!-- <p>24 H</p> -->
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -952,7 +963,7 @@
         "series": [{
                 "values": [
                     <?php
-                        foreach($grafikmasuk as $row){
+                        foreach($grafikkeluar as $row){
                         echo $row['nominal'].",";   
                         }
                     ?>
@@ -972,7 +983,7 @@
             {
                 "values": [
                     <?php
-                        foreach($grafikkeluar as $row){
+                        foreach($grafikmasuk as $row){
                         echo $row['nominal'].",";   
                         }
                     ?>
@@ -1001,14 +1012,18 @@
 }
     </script>
     <script>
-        if ($('#coin_sales1').length) {
-    var ctx = document.getElementById("coin_sales1").getContext('2d');
+        if ($('#grafik_pemasukkan').length) {
+    var ctx = document.getElementById("grafik_pemasukkan").getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
         // The data for our dataset
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "January", "February", "March", "April", "May"],
+            labels: [ <?php
+                        foreach($bulanmasuk as $row1){
+                        echo $row1.",";   
+                        }
+                    ?>],
             datasets: [{
                 label: "Sales",
                 backgroundColor: "rgba(117, 19, 246, 0.1)",
@@ -1062,14 +1077,18 @@
 }    
     </script>
     <script>
-        if ($('#coin_sales2').length) {
-    var ctx = document.getElementById("coin_sales2").getContext('2d');
+        if ($('#grafik_pengeluaran').length) {
+    var ctx = document.getElementById("grafik_pengeluaran").getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
         // The data for our dataset
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "January", "February", "March", "April", "May"],
+            labels: [ <?php
+                        foreach($bulankeluar as $row2){
+                        echo $row2.",";   
+                        }
+                    ?>],
             datasets: [{
                 label: "Sales",
                 backgroundColor: "rgba(240, 180, 26, 0.1)",

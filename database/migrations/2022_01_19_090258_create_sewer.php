@@ -16,6 +16,7 @@ class CreateSewer extends Migration
         Schema::create('sewer', function (Blueprint $table) {
             $table->increments('id_sewer');
             $table->string('id_admin')->nullable();
+            $table->unsignedBigInteger('id_users');
             $table->string('nip');
             $table->string('nama');
             $table->date('tgl_lahir');
@@ -25,6 +26,7 @@ class CreateSewer extends Migration
             $table->string('posisi');
             $table->string('image');
             $table->timestamps();
+            $table->foreign('id_users')->references('id')->on('users');
         });
     }
 

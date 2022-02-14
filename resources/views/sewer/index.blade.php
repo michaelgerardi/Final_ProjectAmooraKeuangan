@@ -44,7 +44,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo_1.png" alt="logo"></a>
+                    <a href="/Admin_Amoora"><img src="assets/images/logo_1.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -52,25 +52,14 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
-                                    <li><a href="index.html">ICO dashboard</a></li>
-                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                    <li><a href="index3.html">SEO dashboard</a></li>
-                                </ul>
+                                <a href="/Admin_Amoora" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i><span>Table Amoora</span></a>
                                 <ul class="collapse">
-                                    <li><a href="index.html">Slot Sampling</a></li>
-                                    <li><a href="index.html">List Sampling</a></li>
-                                    <li><a href="index.html">List Product</a></li>
-                                    <li><a href="index.html">Progress</a></li>
-                                    <li><a href="index.html">Pemasukan</a></li>
-                                    <li><a href="index.html">Pengeluaran </a></li>
-                                    <li><a href="index.html">Sawer </a></li>
-                                    <li><a href="index.html">Transaksi </a></li>
-                                    <li><a href="index.html">Penjualan </a></li>
+                                    <li><a href="/pemasukkan">Pemasukan</a></li>
+                                    <li><a href="/pengeluaran">Pengeluaran </a></li>
+                                    <li><a href="/sewer">Sewer </a></li>
                                 </ul>
                             </li>
                             <!-- <li>
@@ -423,6 +412,10 @@
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">Nama Karyawan</label>
                                   <input name="nama"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nama Karyawan">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Password</label>
+                                  <input name="password"type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Password Karyawan">
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputEmail1">Tanggal Lahir</label>

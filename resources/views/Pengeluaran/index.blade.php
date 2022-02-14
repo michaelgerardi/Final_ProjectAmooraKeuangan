@@ -7,12 +7,12 @@
     <title>Amoora Pengajian</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/metisMenu.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/metisMenu.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}">
     <!-- amcharts css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- Start datatable css -->
@@ -21,10 +21,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
     <!-- style css -->
-    <link rel="stylesheet" href="assets/css/typography.css">
-    <link rel="stylesheet" href="assets/css/default-css.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="{{asset('assets/css/typography.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/default-css.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -44,7 +45,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo_1.png" alt="logo"></a>
+                    <a href="/Admin_Amoora"><img src="assets/images/logo_1.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -52,25 +53,14 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
-                                    <li><a href="index.html">ICO dashboard</a></li>
-                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                    <li><a href="index3.html">SEO dashboard</a></li>
-                                </ul>
+                                <a href="/Admin_Amoora" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i><span>Table Amoora</span></a>
                                 <ul class="collapse">
-                                    <li><a href="index.html">Slot Sampling</a></li>
-                                    <li><a href="index.html">List Sampling</a></li>
-                                    <li><a href="index.html">List Product</a></li>
-                                    <li><a href="index.html">Progress</a></li>
-                                    <li><a href="index.html">Pemasukan</a></li>
-                                    <li><a href="index.html">Pengeluaran </a></li>
-                                    <li><a href="index.html">Sawer </a></li>
-                                    <li><a href="index.html">Transaksi </a></li>
-                                    <li><a href="index.html">Penjualan </a></li>
+                                    <li><a href="/pemasukkan">Pemasukan</a></li>
+                                    <li><a href="/pengeluaran">Pengeluaran </a></li>
+                                    <li><a href="/sewer">Sewer </a></li>
                                 </ul>
                             </li>
                             <!-- <li>
@@ -356,8 +346,7 @@
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <!-- <a class="dropdown-item" href="#">Message</a> -->
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <a class="dropdown-item" href="/login">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -368,40 +357,106 @@
                 <div class="row">
                     <!-- data table start -->
                     <div class="col-12 mt-5">
-                        <div class="card">
+                    <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Data Table Pengeluaran</h4>
-                                <div class="data-tables">
+                            <div class="data-tables">
                                     <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal">
                                       Tambah Data Pengeluaran
                                     </button>
-                                    <br>
-                                    <table id="dataTable" class="text-center">
-                                        <thead class="bg-light text-capitalize">
+                                <h4 class="header-title">Data Pengeluaran</h4>
+                                    <div class="dropdown col-lg-6 col-md-4 col-sm-6">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                            Download File
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/downloadPDF/kewajibanpdf">Download Kewajiban</a>
+                                            <a class="dropdown-item" href="/downloadPDF/produksipdf">Download Produksi</a>
+                                            <a class="dropdown-item" href="/downloadPDF/customerpdf">Download Customer</a>
+                                        </div>
+                                    </div>
+                            </div>
+                            <br>
+  
+                                <div id="accordion4" class="according accordion-s3 gradiant-bg">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="card-link" data-toggle="collapse" href="#accordion41">Pengeluaran Kewajiban</a>
+                                        </div>
+                                        <div id="accordion41" class="collapse show" data-parent="#accordion4">
+                                            <div class="card-body">
+                                                <table class="w3-table-all w3-card-4">
+                                                  <tr>
+                                                    <th>Tanggal Pengeluaran</th>
+                                                    <th>Keterangan Pengeluaran</th>
+                                                    <th>Nominal</th>
+                                                    <th>Delete</th>
+                                                  </tr>
+                                                  @foreach ($data_pengeluarankewajiban as $kewajiban)
+                                                  <tr>
+                                                    <td>{{$kewajiban->tgl_pengeluaran}}</td>
+                                                    <td>{{$kewajiban->ket_pengeluaran}}</td>
+                                                    <td>@currency($kewajiban->jml_pengeluaran)</td>
+                                                    <td><a href="/deletepengeluaran/{{$kewajiban->id_pengeluaran}}"> delete</a></td>
+                                                  </tr>
+                                                  @endforeach
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <a class="collapsed card-link" data-toggle="collapse" href="#accordion42">Pengeluaran Produksi</a>
+                                        </div>
+                                        <div id="accordion42" class="collapse" data-parent="#accordion4">
+                                            <div class="card-body">
+                                              <table class="w3-table-all w3-card-4">
+                                              <tr>
+                                                    <th>Tanggal Pengeluaran</th>
+                                                    <th>Keterangan Pengeluaran</th>
+                                                    <th>Nominal</th>
+                                                    <th>Delete</th>
+                                                  </tr>
+                                                  @foreach ($data_pengeluaranproduksi as $produksi)
+                                                  <tr>
+                                                    <td>{{$produksi->tgl_pengeluaran}}</td>
+                                                    <td>{{$produksi->ket_pengeluaran}}</td>
+                                                    <td>@currency($produksi->jml_pengeluaran)</td>
+                                                    <td><a href="/deletepengeluaran/{{$produksi->id_pengeluaran}}"> delete</a></td>
+                                                  </tr>
+                                                  @endforeach
+                                              </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header">
+                                          <a class="collapsed card-link" data-toggle="collapse" href="#accordion43">Pengeluaran Customer</a>
+                                      </div>
+                                      <div id="accordion43" class="collapse" data-parent="#accordion4">
+                                          <div class="card-body">
+                                            <table class="w3-table-all w3-card-4">
                                             <tr>
-                                                <th>Tanggal Pengeluaran</th>
-                                                <th>Keterangan Pengeluaran</th>
-                                                <th>Nominal</th>
-                                                <th>Update</th>
-                                                <th>Delete</th>
-                                            </tr>
-                                        </thead>
-                                  
-                                        <tbody>
-                                            @foreach ($data_pengeluaran as $pengeluaran)
-                                            <tr>
-                                                <td>{{$pengeluaran->tgl_pengeluaran}}</td>
-                                                <td>{{$pengeluaran->ket_pengeluaran}}</td>
-                                                <td>@currency($pengeluaran->jml_pengeluaran)</td>
-                                                <td><a href="" class="btn btn-default">update</a></td>
-                                                <td><a href="" class="btn btn-default">delete</a></td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                    <th>Tanggal Pengeluaran</th>
+                                                    <th>Keterangan Pengeluaran</th>
+                                                    <th>Nominal</th>
+                                                    <th>Delete</th>
+                                                  </tr>
+                                                  @foreach ($data_pengeluarancust as $cust)
+                                                  <tr>
+                                                    <td>{{$cust->tgl_pengeluaran}}</td>
+                                                    <td>{{$cust->ket_pengeluaran}}</td>
+                                                    <td>@currency($cust->jml_pengeluaran)</td>
+                                                    <td><a href="/deletepengeluaran/{{$cust->id_pengeluaran}}"> delete</a></td>
+                                                  </tr>
+                                                  @endforeach
+                                            </table>
+                                          </div>
+                                      </div>
+                                  </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                     <!-- Modal Input -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -420,10 +475,14 @@
                                   <label for="exampleInputEmail1">Tanggal Pengeluaran</label>
                                   <input name="tgl_pengeluaran" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gaji Sewer">
                                 </div>
-                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Keterangan Pengeluaran</label>
-                                    <textarea name="ket_pengeluaran"class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
-                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Keterangan Pengeluaran</label>
+                                    <select name="ket_pengeluaran"class="form-control" id="exampleFormControlSelect1">
+                                      <option value="Kewajiban">Kewajiban</option>
+                                      <option value="Produksi">Produksi</option>
+                                      <option value="Customer">Customer</option>
+                                    </select>
+                                  </div>
                                  <div class="form-group">
                                     <label for="exampleInputEmail1">Nominal Pengeluaran</label>
                                     <input name="jml_pengeluaran" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nominal">
@@ -437,9 +496,6 @@
                       </div>
                       </div>
                       </div>
-                       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
                     <!-- Modal Input -->
                 </div>
             </div>
@@ -633,14 +689,14 @@
     </div>
     <!-- offset area end -->
     <!-- jquery latest version -->
-    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="{{asset('assets/js/vendor/jquery-2.2.4.min.js')}}"></script>
     <!-- bootstrap 4 js -->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/metisMenu.min.js"></script>
-    <script src="assets/js/jquery.slimscroll.min.js"></script>
-    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="{{asset('assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('assets/js/metisMenu.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.slicknav.min.js')}}"></script>
 
     <!-- Start datatable js -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
@@ -649,8 +705,8 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
     <!-- others plugins -->
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/scripts.js"></script>
+    <script src="{{asset('assets/js/plugins.js')}}"></script>
+    <script src="{{asset('assets/js/scripts.js')}}"></script>
 </body>
 
 </html>

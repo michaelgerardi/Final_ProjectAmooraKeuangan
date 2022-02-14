@@ -32,6 +32,7 @@
                   <li class="breadcrumb-item"><a href="index.html">Beranda</a></li>
                   <li class="breadcrumb-item"><a href="javascript:void(0)">Akun</a></li>
                   <li class="breadcrumb-item active" aria-current="page"> {{$data_akun->nama}}</li>
+                  <li class="breadcrumb-item"><a href="/login">Logout</a></li>
                 </ol>
               </nav>
               <!-- /Breadcrumb -->
