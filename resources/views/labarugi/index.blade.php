@@ -45,22 +45,49 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
+<<<<<<< HEAD
                     <a href="index.html"><img src="{{asset('assets/images/logo_1.png')}}" alt="logo"></a>
+=======
+                    <a href="index.html"><img src="assets/images/logo_1.png" alt="logo"></a>
+>>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
                 </div>
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
+<<<<<<< HEAD
                        <ul class="metismenu" id="menu">
                             <li>
                                 <a href="/Admin_Amoora" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+=======
+                        <ul class="metismenu" id="menu">
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                <ul class="collapse">
+                                    <li><a href="index.html">ICO dashboard</a></li>
+                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
+                                    <li><a href="index3.html">SEO dashboard</a></li>
+                                </ul>
+>>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
                             </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i><span>Table Amoora</span></a>
                                 <ul class="collapse">
+<<<<<<< HEAD
                                     <li><a href="/pemasukkan">Pemasukan</a></li>
                                     <li><a href="/pengeluaran">Pengeluaran </a></li>
                                     <li><a href="/sewer">Sewer </a></li>
+=======
+                                    <li><a href="index.html">Slot Sampling</a></li>
+                                    <li><a href="index.html">List Sampling</a></li>
+                                    <li><a href="index.html">List Product</a></li>
+                                    <li><a href="index.html">Progress</a></li>
+                                    <li><a href="index.html">Pemasukan</a></li>
+                                    <li><a href="index.html">Pengeluaran </a></li>
+                                    <li><a href="index.html">Sawer </a></li>
+                                    <li><a href="index.html">Transaksi </a></li>
+                                    <li><a href="index.html">Penjualan </a></li>
+>>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
                                 </ul>
                             </li>
                             <!-- <li>
@@ -360,7 +387,11 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <div class="card-body">
+<<<<<<< HEAD
                                 <h4 class="header-title">KAS Perusahaan Amoora Couture </h4>
+=======
+                                <h4 class="header-title">KAS Perusahaan Amoora Couture</h4>
+>>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
                                 <div class="data-tables">
                                     {{-- <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"><a style="color:white;text-decoration: none;" href="{{route('jurnal_umum')}}">
                                       Buat Jurnal Umum
@@ -377,7 +408,11 @@
                                         @foreach($masuk as $masuk)
                                         <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2">
                                             <div class="col"> <h5 class="pl-5 ml-5 text-capitalize font-weight-bold col">{{$masuk['ket_pemasukkan']}}</h5>  </div>
+<<<<<<< HEAD
                                             <div class="col"><h5 class="text-center font-weight-bold col">@currency($masuk['nominal'])</h5> </div>
+=======
+                                            <div class="col"><h5 class="text-center font-weight-bold col">Rp.{{$masuk['nominal']}}</h5> </div>
+>>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
                                         </div>
                                         @endforeach 
                                         <br><br>
@@ -386,6 +421,7 @@
                                         @foreach($keluar as $rugi)
                                         <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2">
                                             <div class="col"> <h5 class="pl-5 ml-5 text-capitalize font-weight-bold col">{{$rugi['ket_pengeluaran']}}</h5>  </div>
+<<<<<<< HEAD
                                             <div class="col"><h5 class="text-center font-weight-bold col">@currency($rugi['jml_pengeluaran'])</h5> </div>
                                         </div>
                                         @endforeach
@@ -399,6 +435,21 @@
                                             <div class="col"> <h5 class="text-capitalize font-weight-bold col">Laba Rugi</h5>  </div>
                                             <div class="col"><h5 class="text-center font-weight-bold col">@currency($realngentood)</h5> </div>
                                         </div>
+=======
+                                            <div class="col"><h5 class="text-center font-weight-bold col">Rp.{{$rugi['jml_pengeluaran']}}</h5> </div>
+                                        </div>
+                                        @endforeach
+                                        <hr>
+                                        {{-- <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2">
+                                            <div class="col"> <h5 class="text-capitalize font-weight-bold col">Total</h5>  </div>
+                                            <div class="col"><h5 class="text-center font-weight-bold col">Rp.{{DB::table("beban")->sum("jum")}}</h5> </div>
+                                        </div> --}}
+                                        <br>
+                                        {{-- <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2">
+                                            <div class="col"> <h5 class="text-capitalize font-weight-bold col">Laba Rugi</h5>  </div>
+                                            <div class="col"><h5 class="text-center font-weight-bold col">Rp.{{DB::table("jurnal-posting")->where('ket','=','Penjualan')->sum("kredit")-DB::table("beban")->sum("jum")}}</h5> </div>
+                                        </div> --}}
+>>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
                                     </div>
 
 
@@ -658,4 +709,8 @@
     <script src="/assets/js/scripts.js"></script>
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
