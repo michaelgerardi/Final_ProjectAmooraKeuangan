@@ -54,4 +54,13 @@ class pengeluaran_controller extends Controller
         pengeluaran::where('id_pengeluaran',$id_pengeluaran)->delete();
         return redirect()->back();
     }
+
+    public function edit_pengeluaran(Request $request){
+        pengeluaran::where('id_pengeluaran',$request->id)->update([
+            'ket_pengeluaran'=> $request->ket_pengeluaran,
+            'jml_pengeluaran'=> $request->jml_pengeluaran,
+            'tgl_pengeluaran'=> $request->tgl_pengeluaran,
+        ]);
+        return redirect()->route('pengeluaran');
+    }
 }

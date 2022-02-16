@@ -7,7 +7,9 @@ use App\Models\sewer;
 use App\Models\gaji;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use PDF;
+use Auth;
 
 class sewer_controller extends Controller
 {
@@ -25,17 +27,24 @@ class sewer_controller extends Controller
         ]);
         $user->save();
         $id_user=User::where('name',$request->nip)->latest()->value('id');
-        $data_sewer = new sewer([
-            'nip' =>$request->nip,
-            'id_users'=>$id_user,
-            'nama'=>$request->nama,
-            'tgl_lahir'=>$request->tgl_lahir,
-            'alamat'=>$request->alamat,
-            'no_hp'=>$request->no_hp,
-            'jenis_kelamin'=>$request->jenis_kelamin,
-            'posisi'=>$request->posisi,
-            'image'=>$request->image
-        ]);
+      
+        if($request->image != null){
+            $fullname = $request->file('image')->getClientOriginalName();
+            $extn =$request->file('image')->getClientOriginalExtension();
+            $finalS=$id_user.'fotoprofil'.'_'.time().'.'.$extn;
+            $path = $request->file('image')->storeAs('public/imgprofil', $finalS);
+            $data_sewer = new sewer([
+                'nip' =>$request->nip,
+                'id_users'=>$id_user,
+                'nama'=>$request->nama,
+                'tgl_lahir'=>$request->tgl_lahir,
+                'alamat'=>$request->alamat,
+                'no_hp'=>$request->no_hp,
+                'jenis_kelamin'=>$request->jenis_kelamin,
+                'posisi'=>$request->posisi,
+                'image'=>$finalS,
+            ]);
+        }
         $data_sewer->save();
         // /$request->validate([
         //     'nip' => 'required',
@@ -62,16 +71,16 @@ class sewer_controller extends Controller
         //return $data_sewer;
     }
 
-    public function edit_sewer($id_sewer, Request $request){
-        // $data_sewer = sewer::find($id_sewer);
-        // $data_sewer = $request->input('nip');
-        // $data_sewer = $request->input('nama');
-        // $data_sewer = $request->input('tgl_lahir');
-        // $data_sewer = $request->input('alamat');
-        // $data_sewer = $request->input('no_hp');
-        // $data_sewer = $request->input('jenis_kelamin');
-        // $data_sewer = $request->input('gaji');
-        // $data_sewer = $request->input('posisi');
+    public function edit_sewer(Request $request){
+        sewer::where('id_sewer',$request->id)->update([
+            'nip'=> $request->nip,
+            'nama'=> $request->nama,
+            'tgl_lahir'=> $request->tgl_lahir,
+            'alamat'=> $request->alamat,
+            'no_hp'=> $request->no_hp,
+            'jenis_kelamin'=> $request->jenis_kelamin,
+            'posisi'=> $request->posisi,
+        ]);
         return redirect()->route('sewer');
     }
 
@@ -104,6 +113,26 @@ class sewer_controller extends Controller
         
     }
 
+    public function edit_akun(Request $request){
+        $id_sewer = Auth::user()->id;
+        $del=sewer::where('id_sewer','=', $request->id)->value('image');
+        $delpath='public/imgprofil/'.$del;
+        Storage::delete($delpath);
+        $fullname = $request->file('image')->getClientOriginalName();
+        $extn =$request->file('image')->getClientOriginalExtension();
+        $finalS=$id_sewer.'fotoprofil'.'_'.time().'.'.$extn;
+        $path = $request->file('image')->storeAs('public/imgprofil', $finalS);
+        sewer::where('id_sewer',$request->id)->update([
+            'nama'=> $request->nama,
+            'tgl_lahir'=> $request->tgl_lahir,
+            'no_hp'=> $request->no_hp,
+            'jenis_kelamin'=> $request->jenis_kelamin,
+            'alamat'=> $request->alamat,
+            'image'=>$finalS,
+        ]);
+        return redirect()->back();
+    }
+  
     public function download_sewer(){
         $data_sewer = sewer::all();
         $pdf = PDF::loadView('sewerpdf.sewerpdf',compact('data_sewer'));

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profil Akun</title>
     <link rel="stylesheet" href="{{asset('assets/css/akunprofil.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -42,13 +42,11 @@
                   <div class="card">
                     <div class="card-body">
                       <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <img src="/storage/imgprofil/{{$data_akun->image}}" alt="Admin" class="rounded-circle" width="150">
                         <div class="mt-3">
                           <h4> {{$data_akun->nama}} </h4>
                           <p class="text-secondary mb-1"> {{$data_akun->nip}}</p>
                           <p class="text-muted font-size-sm"> {{$data_akun->posisi}}</p>
-                          <button class="btn btn-primary">Cuti</button>
-                          <button class="btn btn-outline-primary">Absensi</button>
                         </div>
                       </div>
                     </div>
@@ -109,8 +107,58 @@
                       </div>
                       <hr>
                       <div class="row">
-                        <div class="col-sm-12">
-                          <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                        <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#updateModalProfil">
+                           Edit
+                        </button>
+                        <div class="modal fade" id="updateModalProfil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Profil</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                      <form action="{{route('edit_akun')}}" method="POST" enctype='multipart/form-data'>
+{{csrf_field()}}
+                        <input name="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$data_akun->id_sewer}}">
+
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Full Name</label>
+                                  <input name="nama" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$data_akun->nama}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Tanggal Lahir</label>
+                                  <input name="tgl_lahir" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$data_akun->tgl_lahir}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">No Hp</label>
+                                  <input name="no_hp"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$data_akun->no_hp}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleFormControlSelect1">Jenis Kelamin</label>
+                                  <select name="jenis_kelamin"class="form-control" id="exampleFormControlSelect1">
+                                    <option value="Laki - laki">Laki - Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleFormControlTextarea1">Alamat</label>
+                                  <textarea name="alamat"class="form-control" id="exampleFormControlTextarea1" rows="3">{{$data_akun->alamat}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Upload Foto Profil</label>
+                                  <input name="image"type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$data_akun->image}}">
+                                </div>
+                            </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                         </div>
                       </div>
                     </div>

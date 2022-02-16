@@ -1809,6 +1809,7 @@ table.dbkit-table tr td {
     padding: 11px 17px;
     font-size: 13px;
     letter-spacing: 0;
+    display: inline;
 }
 
 .btn-xl {

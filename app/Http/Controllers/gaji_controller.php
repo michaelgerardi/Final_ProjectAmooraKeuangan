@@ -20,11 +20,13 @@ class gaji_controller extends Controller
     dd($request);
     }
     
-    public function edit_gaji($id_gaji, Request $request){
-        $data_penggajian = gaji::find($id_gaji);
-        $data_penggajian = $request->input('gaji');
-        $data_penggajian = $request->input('jenis_gaji');
-        $data_penggajian = $request->input('tgl_gaji');
+    public function edit_gaji(Request $request){
+        gaji::where('id_gaji',$request->id)->update([
+            'id_sewer' => $request->id_sewer,
+            'gaji' => $request->gaji,
+            'jenis_gaji' => $request->jenis_gaji,
+            'tgl_gaji' => $request->tgl_gaji,
+        ]);
         return redirect()->route('penggajian');
     }
 

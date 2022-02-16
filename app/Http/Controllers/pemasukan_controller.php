@@ -29,4 +29,26 @@ class pemasukan_controller extends Controller
         pemasukan::where('id_pemasukan',$id_pemasukan)->delete();
         return redirect()->back();
     }
+
+    public function edit_pemasukan(Request $request){
+        // $data_pemasukan = pemasukan::find($id_pemasukan);
+        // $data_pemasukan = $request->input('tanggal');
+        // $data_pemasukan = $request->input('ket_pemasukan');
+        // $data_pemasukan = $request->input('nominal');
+        pemasukan::where('id_pemasukan',$request->id)->update([
+            'tanggal' => $request->tanggal,
+            'ket_pemasukkan' => $request->ket_pemasukkan,
+            'nominal' => $request->nominal, 
+        ]);
+        return redirect()->route('pemasukan');
+    }
+
+    public function findidpemasukan($id_pemasukan){
+        $data_pemasukan = pemasukan::where('id_pemasukan',$id_pemasukan)->first();
+        $data = [
+            'title' => 'pemasukan',
+            'data_pemasukan' => $data_pemasukan
+        ];
+        return view ('pemasukkan.index', $data);
+    }
 }

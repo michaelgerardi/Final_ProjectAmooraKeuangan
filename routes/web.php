@@ -75,3 +75,10 @@ route::get('/downloadPDF/pemasukanpdf',[App\Http\Controllers\pemasukan_controlle
 //Delete 
 Route::get('/deletepemasukan/{id_pemasukan}',[App\Http\Controllers\pemasukan_controller::class, 'delete_pemasukan']);
 Route::get('/deletepengeluaran/{id_pengeluaran}',[App\Http\Controllers\pengeluaran_controller::class, 'delete_pengeluaran']);
+
+//Edit Data 
+route::post('/proseseditpemasukan',[App\Http\Controllers\pemasukan_controller::class, 'edit_pemasukan'])->name('edit_pemasukan');
+route::post('/proseseditpengeluaran',[App\Http\Controllers\pengeluaran_controller::class, 'edit_pengeluaran'])->name('edit_pengeluaran');
+route::post('/proseseditsewer',[App\Http\Controllers\sewer_controller::class, 'edit_sewer'])->name('edit_sewer');
+route::post('/proseseditakun',[App\Http\Controllers\sewer_controller::class, 'edit_akun'])->name('edit_akun');
+route::post('/proseseditgaji',[App\Http\Controllers\gaji_controller::class, 'edit_gaji'])->name('edit_gaji');

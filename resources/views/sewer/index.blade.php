@@ -381,10 +381,67 @@
                                               <td>{{$sewer->nip}}</td>
                                               <td>{{$sewer->nama}}</td>
                                               <td>{{$sewer->posisi}}</td>
-                                              <td><a href="/editsewer/{{$sewer->id_sewer}}" class="btn btn-default">update</a></td>
+                                              <td><a href="" data-toggle="modal" data-target="#updateModalSewer{{$loop->iteration}}"> update</a></td>
                                               <td><a href="/deletesewer/{{$sewer->id_sewer}}" class="btn btn-default">delete</a></td>
                                               <td><a href="/akunprofil/{{$sewer->id_sewer}}" class="btn btn-default">View</a></td>
                                             </tr>
+                                            <div class="modal fade" id="updateModalSewer{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Sewer</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                      <form action="{{route('edit_sewer')}}" method="POST">
+{{csrf_field()}}
+                        <input name="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$sewer->id_sewer}}">
+
+                        <div class="form-group">
+                                  <label for="exampleInputEmail1">NIP Karyawan</label>
+                                  <input name="nip"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$sewer->nip}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Nama Karyawan</label>
+                                  <input name="nama"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$sewer->nama}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Password</label>
+                                  <input name="password"type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$sewer->password}}">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Tanggal Lahir</label>
+                                    <input name="tgl_lahir"type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$sewer->tgl_lahir}}" >
+                                 </div>
+                                <div class="form-group">
+                                  <label for="exampleFormControlTextarea1">Alamat</label>
+                                  <textarea name="alamat"class="form-control" id="exampleFormControlTextarea1" rows="3">{{$sewer->alamat}}</textarea>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">No Hp</label>
+                                  <input name="no_hp"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$sewer->no_hp}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleFormControlSelect1">Jenis Kelamin</label>
+                                  <select name="jenis_kelamin"class="form-control" id="exampleFormControlSelect1">
+                                    <option value="Laki - laki">Laki - Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Posisi</label>
+                                  <input name="posisi"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$sewer->posisi}}">
+                                </div>
+                                
+                            </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -403,7 +460,7 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                              <form action="/sewer/tambah" method="POST">
+                              <form action="/sewer/tambah" method="POST" enctype='multipart/form-data'>
                                 {{csrf_field()}}
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">NIP Karyawan</label>
@@ -439,6 +496,10 @@
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">Posisi</label>
                                   <input name="posisi"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Posisi">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Upload Foto Profil</label>
+                                  <input name="image"type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Upload">
                                 </div>
                             </div>
                       <div class="modal-footer">

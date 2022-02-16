@@ -383,10 +383,50 @@
                                                 <td>{{DB::table('sewer')->where('id_sewer', $penggajian['id_sewer'])->value('nama')}}</td>
                                                 <td>{{$penggajian->jenis_gaji}}</td>
                                                 <td>{{$penggajian->tgl_gaji}}</td>
-                                                <td><a href="/editgaji/{{$penggajian->id_gaji}}" class="btn btn-default">update</a></td>
+                                                <td><a href="" data-toggle="modal" data-target="#updateModalGaji{{$loop->iteration}}">update</a></td>
                                                 <td><a href="/deletegaji/{{$penggajian->id_gaji}}" class="btn btn-default">delete</a></td>
                                                 <td>@currency($penggajian->gaji)</td>
                                             </tr>
+                                            <div class="modal fade" id="updateModalGaji{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Penggajian</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                      <form action="{{route('edit_gaji')}}" method="POST">
+{{csrf_field()}}
+                        <input name="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$penggajian->id_gaji}}">
+                        <input name="id_sewer" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$penggajian->id_sewer}}">
+
+                        <div class="form-group">
+                                   
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Gaji Sewer</label>
+                                  <input name="gaji"type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$penggajian->gaji}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Jenis Gaji</label>
+                                    <select name="jenis_gaji"class="form-control" id="exampleFormControlSelect1">
+                                      <option value="Harian">Harian</option>
+                                      <option value="Borongan">Borongan</option>
+                                    </select>
+                                  </div>
+                              
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Tanggal Penggajian</label>
+                                    <input name="tgl_gaji"type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$penggajian->tgl_gaji}}">
+                                 </div>
+                            </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                                             @endforeach
                                         </tbody>
                                     </table>

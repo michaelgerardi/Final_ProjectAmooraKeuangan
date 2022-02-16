@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Amoora Pengajian</title>
+    <title>Amoora Pemasukan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -387,10 +387,47 @@
                                                 <td>{{$pemasukan->tanggal}}</td>
                                                 <td>{{$pemasukan->ket_pemasukkan}}</td>
                                                 <td>@currency($pemasukan->nominal)</td>
-                                                <td><a href="" class="btn btn-default">update</a></td>
+                                                <td><button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#updateModal{{$loop->iteration}}">
+                                                    Update
+                                                </button></td>
                                                 <td><a href="/deletepemasukan/{{$pemasukan->id_pemasukan}}" class="btn btn-default">delete</a></td>
-                                               
+                                                
+                                                
+                                                
                                             </tr>
+                                            <div class="modal fade" id="updateModal{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Pemasukkan</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                      <form action="{{route('edit_pemasukan')}}" method="POST">
+{{csrf_field()}}
+                        <input name="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$pemasukan->id_pemasukan}}">
+
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Tanggal Pemasukan</label>
+                                  <input name="tanggal" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$pemasukan->tanggal}}">
+                                </div>
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Keterangan Pemasukan</label>
+                                    <textarea name="ket_pemasukkan"class="form-control" id="exampleFormControlTextarea1" rows="3"  >{{$pemasukan->ket_pemasukkan}}</textarea>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Nominal Pemasukan</label>
+                                    <input name="nominal" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$pemasukan->nominal}}">
+                                  </div>
+                            </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                                             @endforeach
                                         </tbody>
                                     </table>

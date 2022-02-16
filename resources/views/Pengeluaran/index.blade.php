@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Amoora Pengajian</title>
+    <title>Amoora Pengeluaran</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -374,6 +374,7 @@
                                             <a class="dropdown-item" href="/downloadPDF/customerpdf">Download Customer</a>
                                         </div>
                                     </div>
+                                    
                             </div>
                             <br>
   
@@ -389,6 +390,7 @@
                                                     <th>Tanggal Pengeluaran</th>
                                                     <th>Keterangan Pengeluaran</th>
                                                     <th>Nominal</th>
+                                                    <th>Update</th>
                                                     <th>Delete</th>
                                                   </tr>
                                                   @foreach ($data_pengeluarankewajiban as $kewajiban)
@@ -396,8 +398,46 @@
                                                     <td>{{$kewajiban->tgl_pengeluaran}}</td>
                                                     <td>{{$kewajiban->ket_pengeluaran}}</td>
                                                     <td>@currency($kewajiban->jml_pengeluaran)</td>
+                                                    <td><a href="" data-toggle="modal" data-target="#updateModalK{{$loop->iteration}}"> update</a></td>
                                                     <td><a href="/deletepengeluaran/{{$kewajiban->id_pengeluaran}}"> delete</a></td>
                                                   </tr>
+                                                  <div class="modal fade" id="updateModalK{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Pengeluaran</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                      <form action="{{route('edit_pengeluaran')}}" method="POST">
+{{csrf_field()}}
+                        <input name="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$kewajiban->id_pengeluaran}}">
+
+                        <div class="form-group">
+                                  <label for="exampleInputEmail1">Tanggal Pengeluaran</label>
+                                  <input name="tgl_pengeluaran" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$kewajiban->tgl_pengeluaran}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Keterangan Pengeluaran</label>
+                                    <select name="ket_pengeluaran"class="form-control" id="exampleFormControlSelect1">
+                                      <option value="Kewajiban">Kewajiban</option>
+                                      <option value="Produksi">Produksi</option>
+                                      <option value="Customer">Customer</option>
+                                    </select>
+                                  </div>
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Nominal Pengeluaran</label>
+                                    <input name="jml_pengeluaran" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$kewajiban->jml_pengeluaran}}">
+                                  </div>
+                            </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                                                   @endforeach
                                                 </table>
                                             </div>
@@ -414,6 +454,7 @@
                                                     <th>Tanggal Pengeluaran</th>
                                                     <th>Keterangan Pengeluaran</th>
                                                     <th>Nominal</th>
+                                                    <th>Update</th>
                                                     <th>Delete</th>
                                                   </tr>
                                                   @foreach ($data_pengeluaranproduksi as $produksi)
@@ -421,8 +462,46 @@
                                                     <td>{{$produksi->tgl_pengeluaran}}</td>
                                                     <td>{{$produksi->ket_pengeluaran}}</td>
                                                     <td>@currency($produksi->jml_pengeluaran)</td>
+                                                    <td><a href="" data-toggle="modal" data-target="#updateModalP{{$loop->iteration}}"> update</a></td>
                                                     <td><a href="/deletepengeluaran/{{$produksi->id_pengeluaran}}"> delete</a></td>
                                                   </tr>
+                                                  <div class="modal fade" id="updateModalP{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Pengeluaran</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                      <form action="{{route('edit_pengeluaran')}}" method="POST">
+{{csrf_field()}}
+                        <input name="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$produksi->id_pengeluaran}}">
+
+                        <div class="form-group">
+                                  <label for="exampleInputEmail1">Tanggal Pengeluaran</label>
+                                  <input name="tgl_pengeluaran" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$produksi->tgl_pengeluaran}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Keterangan Pengeluaran</label>
+                                    <select name="ket_pengeluaran"class="form-control" id="exampleFormControlSelect1">
+                                      <option value="Kewajiban">Kewajiban</option>
+                                      <option value="Produksi">Produksi</option>
+                                      <option value="Customer">Customer</option>
+                                    </select>
+                                  </div>
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Nominal Pengeluaran</label>
+                                    <input name="jml_pengeluaran" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$produksi->jml_pengeluaran}}">
+                                  </div>
+                            </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                                                   @endforeach
                                               </table>
                                             </div>
@@ -439,6 +518,7 @@
                                                     <th>Tanggal Pengeluaran</th>
                                                     <th>Keterangan Pengeluaran</th>
                                                     <th>Nominal</th>
+                                                    <th>Update</th>
                                                     <th>Delete</th>
                                                   </tr>
                                                   @foreach ($data_pengeluarancust as $cust)
@@ -446,8 +526,46 @@
                                                     <td>{{$cust->tgl_pengeluaran}}</td>
                                                     <td>{{$cust->ket_pengeluaran}}</td>
                                                     <td>@currency($cust->jml_pengeluaran)</td>
+                                                    <td><a href="" data-toggle="modal" data-target="#updateModalC{{$loop->iteration}}"> update</a></td>
                                                     <td><a href="/deletepengeluaran/{{$cust->id_pengeluaran}}"> delete</a></td>
                                                   </tr>
+                                                  <div class="modal fade" id="updateModalC{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Data Pengeluaran</h5>
+                        
+                      </div>
+                      <div class="modal-body">
+                      <form action="{{route('edit_pengeluaran')}}" method="POST">
+{{csrf_field()}}
+                        <input name="id" type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$cust->id_pengeluaran}}">
+
+                        <div class="form-group">
+                                  <label for="exampleInputEmail1">Tanggal Pengeluaran</label>
+                                  <input name="tgl_pengeluaran" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$cust->tgl_pengeluaran}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Keterangan Pengeluaran</label>
+                                    <select name="ket_pengeluaran"class="form-control" id="exampleFormControlSelect1">
+                                      <option value="Kewajiban">Kewajiban</option>
+                                      <option value="Produksi">Produksi</option>
+                                      <option value="Customer">Customer</option>
+                                    </select>
+                                  </div>
+                                 <div class="form-group">
+                                    <label for="exampleInputEmail1">Nominal Pengeluaran</label>
+                                    <input name="jml_pengeluaran" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$cust->jml_pengeluaran}}">
+                                  </div>
+                            </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                      </div>
+                      </div>
+                      </div>
+                      </div>
                                                   @endforeach
                                             </table>
                                           </div>
