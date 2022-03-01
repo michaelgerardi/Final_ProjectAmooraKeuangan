@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Amoora Pengajian</title>
+    <title>Amoora Jurnal Umum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -61,6 +61,7 @@
                                     <li><a href="/pemasukkan">Pemasukan</a></li>
                                     <li><a href="/pengeluaran">Pengeluaran </a></li>
                                     <li><a href="/sewer">Sewer </a></li>
+                                    <li><a href="/Jurnal_umum">Jurnal Umum</a></li>
                                 </ul>
                             </li>
                             <!-- <li>

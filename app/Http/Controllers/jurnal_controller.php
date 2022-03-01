@@ -141,7 +141,7 @@ class jurnal_controller extends Controller
             ['tgl_pengeluaran','>=',$up],
             ['tgl_pengeluaran','<=',$down],
             ])->get();
-<<<<<<< HEAD
+// <<<<<<< HEAD
         //$laba_rugi =  pengeluaran::selectraw("sum(jml_pengeluaran) as nominal,DATE_FORMAT(tgl_pengeluaran,'%m') as month")->groupby('month')->get();
         $keluartot = pengeluaran::where([
             ['tgl_pengeluaran','>=',$up],
@@ -154,11 +154,11 @@ class jurnal_controller extends Controller
         $realngentood=$masuktot-$keluartot;
         return view('labarugi.index',compact('keluartot','laba_masuk','masuk','keluar','realngentood'));
         //return $keluartot;
-=======
+// =======
         $laba_rugi =  pengeluaran::selectraw("sum(jml_pengeluaran) as nominal,DATE_FORMAT(tgl_pengeluaran,'%m') as month")->groupby('month')->get();
         return view('labarugi.index',compact('laba_rugi','laba_masuk','masuk','keluar'));
         //return $keluar;
->>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
+// >>>>>>> 0bb3ce7c398c99f556806edbb3e0badd9b414b63
     }
 
 

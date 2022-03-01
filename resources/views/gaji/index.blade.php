@@ -60,6 +60,7 @@
                                     <li><a href="/pemasukkan">Pemasukan</a></li>
                                     <li><a href="/pengeluaran">Pengeluaran </a></li>
                                     <li><a href="/sewer">Sewer </a></li>
+                                    <li><a href="/Jurnal_umum">Jurnal Umum</a></li>
                                 </ul>
                             </li>
                             <!-- <li>

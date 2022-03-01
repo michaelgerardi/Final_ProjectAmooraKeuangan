@@ -18,8 +18,9 @@ class dashboard_controller extends Controller
         $total_pengeluaran = pengeluaran::select(pengeluaran::raw('sum(jml_pengeluaran) as pengeluaran'))->first();
         $total_pegawai = sewer::select(sewer::raw('count(id_sewer) as pegawai'))->first();
         
-        //return $bulankeluar;
-        return view('Dashboard.index',compact('total_pemasukan','total_pengeluaran','total_pegawai','grafikkeluar','grafikmasuk','bulankeluar','bulanmasuk'));
+        //return $grafikmasuk[0]->nominal-$grafikkeluar[0]->nominal;
+        $count=count($grafikmasuk);
+        return view('Dashboard.index',compact('count','total_pemasukan','total_pengeluaran','total_pegawai','grafikkeluar','grafikmasuk','bulankeluar','bulanmasuk'));
     }
 
     public function grafik_pemasukan(){

@@ -62,6 +62,7 @@
                                     <li><a href="/pemasukkan">Pemasukan</a></li>
                                     <li><a href="/pengeluaran">Pengeluaran </a></li>
                                     <li><a href="/sewer">Sewer </a></li>
+                                    <li><a href="/Jurnal_umum">Jurnal Umum</a></li>
                                 </ul>
                             </li>
                             <!-- <li>
@@ -390,23 +391,6 @@
                                 <canvas id="grafik_pengeluaran" height="100"></canvas>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="single-report">
-                                <div class="s-report-inner pr--20 pt--30 mb-3 mt-5">
-                                    <div class="icon"><i class="fa fa-money"></i></div>
-                                    <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Pegawai</h4>
-                                        <!-- <p>24 H</p> -->
-                                    </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2>{{$total_pegawai->pegawai}}</h2>
-                                        {{-- <span>- 45.87</span> --}}
-                                    </div>
-                                </div>
-                                <canvas id="coin_sales3" height="100"></canvas>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-md-4">
                             <div class="single-report">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
@@ -415,12 +399,8 @@
                                         <h4 class="header-title mb-0">Laba Rugi</h4>
                                         <!-- <p>24 H</p> -->
                                     </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2>{{$total_pegawai->pegawai}}</h2>
-                                        {{-- <span>- 45.87</span> --}}
-                                    </div>
                                 </div>
-                                <canvas id="coin_sales3" height="100"></canvas>
+                                <canvas id="laba_rugi" height="100"></canvas>
                             </div>
                         </div>
                     </div>
@@ -435,22 +415,13 @@
                                     <h4 class="header-title mb-0">Grafik pemasukan dan pengeluaran</h4>
                                     <select class="custome-select border-0 pr-3">
                                         <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
+                                        <option value="0"></option>
                                     </select>
                                 </div>
                                 <div id="verview-shart"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-4 coin-distribution">
-                        <div class="card h-full">
-                            <div class="card-body">
-                                <h4 class="header-title mb-0">Grafik Keuangan</h4>
-                                <div id="coin_distribution"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- overview area end -->
                 <!-- market value area start -->
                 <!-- <div class="row mt-5 mb-5">
@@ -565,100 +536,7 @@
                     </div> -->
                     <!-- Live Crypto Price area end -->
                     <!-- trading history area start -->
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h4 class="header-title">History Keuangan Amoora</h4>
-                                    <div class="trd-history-tabs">
-                                        <ul class="nav" role="tablist">
-                                            <li>
-                                                <a class="active" data-toggle="tab" href="#buy_order" role="tab">Pengeluaran</a>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="tab" href="#sell_order" role="tab">Pemasukan</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>Last 24 Hours</option>
-                                        <option value="0">01 July 2018</option>
-                                    </select>
-                                </div>
-                                <div class="trad-history mt-4">
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="tab-pane fade show active" id="buy_order" role="tabpanel">
-                                            <div class="table-responsive">
-                                                <table class="dbkit-table">
-                                                    <tr class="heading-td">
-                                                        <td>Trading ID</td>
-                                                        <td>Time</td>
-                                                        <td>Status</td>
-                                                        <td>Amount</td>
-                                                        <td>Last Trade</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>78211</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$758.90</td>
-                                                        <td>$05245.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>782782</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$77878.90</td>
-                                                        <td>$7778.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>89675978</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$0768.90</td>
-                                                        <td>$0945.090</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="sell_order" role="tabpanel">
-                                            <div class="table-responsive">
-                                                <table class="dbkit-table">
-                                                    <tr class="heading-td">
-                                                        <td>Trading ID</td>
-                                                        <td>Time</td>
-                                                        <td>Status</td>
-                                                        <td>Amount</td>
-                                                        <td>Last Trade</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>8964978</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$445.90</td>
-                                                        <td>$094545.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>89675978</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$78.90</td>
-                                                        <td>$074852945.090</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>78527878</td>
-                                                        <td>4.00 AM</td>
-                                                        <td>Pending</td>
-                                                        <td>$0768.90</td>
-                                                        <td>$65465.090</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    
+                       
                     <!-- trading history area end -->
               
                 <!-- row area end -->
@@ -1139,7 +1017,76 @@
             }
         }
     });
-}    
+} 
+</script>
+<script>
+if ($('#laba_rugi').length) {
+    var ctx = document.getElementById("laba_rugi").getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+        // The data for our dataset
+        data: {
+            labels: [<?php
+                        foreach($bulankeluar as $row2){
+                        echo $row2.",";   
+                        }
+                    ?>],
+            datasets: [{
+                label: "Sales",
+                backgroundColor: "rgba(247, 163, 58, 0.1)",
+                borderColor: '#fd9d24',
+                fill: true,
+                data: [
+                    <?php
+                        for($i=0;$i<$count;$i++){
+                        echo $grafikmasuk[$i]->nominal-$grafikkeluar[$i]->nominal.",";   
+                        //echo $i;
+                        }
+                       //echo '4000'.','.'2000'
+                    ?>
+                ],
+            }]
+        },
+        // Configuration options go here
+        options: {
+            legend: {
+                display: false
+            },
+            animation: {
+                easing: "easeInOutBack"
+            },
+            scales: {
+                yAxes: [{
+                    display: !1,
+                    ticks: {
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold",
+                        beginAtZero: !0,
+                        maxTicksLimit: 5,
+                        padding: 0
+                    },
+                    gridLines: {
+                        drawTicks: !1,
+                        display: !1
+                    }
+                }],
+                xAxes: [{
+                    display: !1,
+                    gridLines: {
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 0,
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold"
+                    }
+                }]
+            }
+        }
+    });
+}
+
     </script>
 </body>
 
