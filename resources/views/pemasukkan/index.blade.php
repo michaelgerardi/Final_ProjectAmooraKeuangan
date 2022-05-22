@@ -343,7 +343,7 @@
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}}<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <!-- <a class="dropdown-item" href="#">Message</a> -->
                                 <a class="dropdown-item" href="#">Settings</a>
@@ -392,11 +392,9 @@
                                                     Update
                                                 </button></td>
                                                 <td><a href="/deletepemasukan/{{$pemasukan->id_pemasukan}}" class="btn btn-default">delete</a></td>
-                                                
-                                                
-                                                
                                             </tr>
-                                            <div class="modal fade" id="updateModal{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            
+                       <div class="modal fade" id="updateModal{{$loop->iteration}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                       <div class="modal-content">
                       <div class="modal-header">
@@ -431,6 +429,8 @@
                       </div>
                                             @endforeach
                                         </tbody>
+                                        {{$data_pemasukan->links()}}
+
                                     </table>
                                 </div>
                             </div>

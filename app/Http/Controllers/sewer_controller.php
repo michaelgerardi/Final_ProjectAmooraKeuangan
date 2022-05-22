@@ -14,7 +14,7 @@ use Auth;
 class sewer_controller extends Controller
 {
     public function index_sewer(){
-        $data_sewer = sewer::all();
+        $data_sewer = sewer::paginate(5);
         return view('sewer.index',compact('data_sewer'));
     }
 

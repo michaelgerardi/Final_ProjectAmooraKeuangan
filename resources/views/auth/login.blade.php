@@ -45,7 +45,8 @@
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
-                            <label for="exampleInputEmail1">NIP</label>
+                            <label for="exampleInputEmail1">NIP(Sewer)/Nama(Admin)
+                            </label>
                             <input type="text" name="name" id="exampleInputEmail1">
                             <i class="ti-email"></i>
                             <div class="text-danger"></div>

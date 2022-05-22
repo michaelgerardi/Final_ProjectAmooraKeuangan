@@ -9,7 +9,7 @@ use PDF;
 class pemasukan_controller extends Controller
 {
     public function index_pemasukan(){
-        $data_pemasukan = pemasukan::all();
+        $data_pemasukan = pemasukan::paginate(10);
         return view('Pemasukkan.index',compact('data_pemasukan'));
     }
 
